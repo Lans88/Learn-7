@@ -1,0 +1,143 @@
+//Множества(Sets)
+//Базовые св-ва и методы мн-в
+//создаем пустое множество
+var musicStyleSet = Set<String>()
+//добавим в мн-во новый элемент
+musicStyleSet.insert("Jazz")
+//удаление элемента мн-ва
+//создадим мн-во со значениями
+var mStyleSet: Set <String> = ["pop", "rock", "rap"]
+//Удаляем одно из значений
+mStyleSet.remove("rap")
+//удаляем несуществующий элемент
+mStyleSet.remove("classik")
+//удаляем все элементы
+mStyleSet.removeAll()
+mStyleSet
+    //проверка наличия элемента
+var onlyStyleSet: Set<String> = ["rap", "disco", "blues", "metall-core"]
+onlyStyleSet.contains("pop")
+    //определяем количество элементво
+onlyStyleSet.count
+
+    //Операции со множествами
+    //множество с нечетными цифрами
+let oddDigits: Set = [1, 3, 5, 7, 9]
+//множество с четными цифрами
+let evenDigits: Set = [2, 4, 6, 8]
+//смешанное множество
+let differentDigits: Set = [3, 4, 7, 8]
+//получение общих элементов
+let inter = differentDigits.intersection(oddDigits)
+//получение не пересекающихся значений
+let milan = differentDigits.symmetricDifference(evenDigits)
+//объединение элементов из 2х мн-в
+var union = evenDigits.union(differentDigits)
+print (union)
+var secondUnion = union.union(oddDigits)
+print (secondUnion)
+    //Возвращение элементов первого мн-ва, которые не входят во второе
+var substractSet = differentDigits.subtracting(oddDigits)
+print (substractSet)
+
+    //Отношения множеств
+let aSet: Set = [1, 2, 3, 4, 5]
+let bSet: Set = [1, 3]
+let cSet: Set = [6, 7, 8, 9]
+//создали копию bSet
+let copyBSet = bSet
+//проверяем эквивалентность копии и оригинала мн-в
+copyBSet == bSet
+    //Определение явл. одно мно-во подмн-м другого
+bSet.isSubset(of: aSet)
+    //Определение явл. одно мн-во надмн-вом другого
+aSet.isSuperset(of: bSet) //является
+aSet.isSuperset(of: cSet) //не является
+    //Проверка на налчиие общих элементов
+aSet.isDisjoint(with: bSet) //false - общие элементы есть
+aSet.isDisjoint(with: cSet) //true - общих эл-в нет
+    /* проверка явл. мн-во подмн-м или надмн-вом, не равным указанному
+ */
+aSet.isStrictSubset(of: bSet)
+bSet.isStrictSuperset(of: aSet)
+    // Сортировка мн-в, при сортировке возвращается массив, где элементы расположены в порядке возрастания
+let setOfNum: Set = [2, 7, 1, 9, 0, 3, 5, 4, 6, 8]
+let sortedArray = setOfNum.sorted()
+print (sortedArray)
+let typeSorted = type(of: sortedArray)
+print (typeSorted)
+
+  
+  
+  //Словари (Dictionary)
+    //Создание словаря
+let dictionary = [1: "one", 2: "two", 3: "three"]
+print (dictionary)
+    //создание словаря при помощи dictionaryLiteral
+let dictCyfra = Dictionary(dictionaryLiteral:(1, 1), (2, 2))
+print (dictCyfra)
+    // Создание словаря на основе однотипных кортежей
+    // базовая коллекция кортежей
+let baseCollection = [(2, 5), (3, 6), (4,7)]
+//создание словаря на основе базовой коллекции
+let newDictionary = Dictionary(uniqueKeysWithValues: baseCollection)
+print (newDictionary)
+    //формирование словаря на основе 2х произвольных последовательностей
+    // массив звезд
+let starNames = ["Proxima Centauri", "Centauri A", "Centauri B"]
+//массив расстояний до звезд
+let distancesStarNames = [4.24, 3.76, 8.98]
+//получение словаря содержащего пары значений
+let starDistanceDict = Dictionary(uniqueKeysWithValues: zip(starNames, distancesStarNames))
+print (starDistanceDict)
+    //Types dictionaryes
+    //Type dictionary [Int: String]
+let codesDesc = [200: "succes", 300: "warning", 400: "danger", 500: "error"]
+//явное определение типа словаря
+let dictOne: Dictionary <Int, Bool> = [100: false, 200: true, 300: true]
+//краткая форма записи
+let dictTwo: [Int:String] = [2: "Artem", 3: "Juliya", 4: "Wilen"]
+
+//взаимодействие с эл-ми словаря
+var countryDict = ["RUS": "Россия", "BEL": "Беларусь", "GB": "Великобритания"]
+//получаем значение элемента
+var countryName = countryDict["BEL"]
+print (countryName)
+    //изменение значения элемента
+countryDict["RUS"] = "Russian Federation"
+print (countryDict)
+var oldName = countryDict.updateValue("Белоруссия", forKey: "BEL")
+oldName
+print (oldName)
+    //создание нового элемента в словаре, для этого просто в словарь добавляем новый ключ и значение
+countryDict["UKR"] = "Ukraine"
+print (countryDict)
+    //удаление элемента словаря, в ковычках указываем ключ удаляемого значения
+countryDict.removeValue(forKey: "UKR")
+    //пустой словарь
+var easyDict: [Int: Int] = [:]
+var anotherDict = Dictionary<Int, Int>()
+//уничтожение всех элементов словаря
+var birthDay = [1988: "Artem", 1991: "Juliya"]
+print (birthDay)
+birthDay = [:]
+print (birthDay)
+
+    //Базовые свойства и методы словарей
+    //Возвращение количества элементов в словаре
+var someDictionary = ["One": 1, "Two": 2, "Three": 3]
+//количество элементов в словаре
+let countSomeDictionart = someDictionary.count
+print(countSomeDictionart)
+    //если элементов 0, то вернется значение true
+var emptyDict: [String:Int] = [:]
+emptyDict.count //0
+emptyDict.isEmpty //true
+    //получение всех ключей и значений словаря (keys & values)
+    //все ключи словаря countryDict
+let keysDict = countryDict.keys // ["RUS", "GB", "BEL"]
+let valuesDict = countryDict.values //["Великобритания", "Russian Federation", "Белоруссия"]
+//преобразование словаря во множество и массив
+let keysSet = Set(keysDict)
+let valuesArray = Array(valuesDict)
+
